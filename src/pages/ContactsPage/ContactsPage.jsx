@@ -2,7 +2,8 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {selectContacts, selectError, selectLoading} from "../../redux/contacts/selectors";
 import {selectFilteredContacts, selectNameFilter} from "../../redux/filters/selectors";
-import {fetchContacts} from "../../redux/contacts/operations";
+import {deleteContact, fetchContacts} from "../../redux/contacts/operations";
+import {logoutThunk} from "../../redux/auth/operations";
 import {setCurrentContact} from "../../redux/contacts/slice";
 
 import Section from "../../components/Layout/Section";
@@ -14,8 +15,7 @@ import ContactList from "../../components/ContactList/ContactList";
 import Notification from "../../components/Notification/Notification";
 import Loader from "../../components/Loader/Loader";
 import EditContactModal from "../../components/EditContactModal/EditContactModal";
-
-import NotificationDelete from "../../components/NotificationDelete/NotificationDelete";
+import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
 
 const ContactsPage = () => {
   const contacts = useSelector(selectContacts);
@@ -26,6 +26,7 @@ const ContactsPage = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenWindow, setIsOpenWindow] = useState(false);
+
   const [deleteContactId, setDeleteContactId] = useState(null);
 
   useEffect(() => {
@@ -71,10 +72,11 @@ const ContactsPage = () => {
         </Container>
       </Section>
       <EditContactModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
-      <NotificationDelete
+      <ConfirmationModal
         isOpenWindow={isOpenWindow}
         onClose={() => setIsOpenWindow(false)}
-        id={deleteContactId}
+        onConfirm={() => dispatch(deleteContact(deleteContactId))}
+        text="Do you want delete this contact?"
       />
     </>
   );

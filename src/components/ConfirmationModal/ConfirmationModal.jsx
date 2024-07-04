@@ -1,15 +1,11 @@
 import Modal from "react-modal";
 import {customStyles} from "../../helpers/customStyleForModal";
-import {deleteContact} from "../../redux/contacts/operations";
-import {useDispatch} from "react-redux";
 import {AnimatePresence, motion} from "framer-motion";
 import {modalVariants} from "../../helpers/paramsAnimationModal";
 
-const NotificationDelete = ({isOpenWindow, onClose, id}) => {
-  const dispatch = useDispatch();
-
-  const handleDelete = () => {
-    dispatch(deleteContact(id));
+const ConfirmationModal = ({isOpenWindow, onClose, text, onConfirm}) => {
+  const handleConfirm = () => {
+    onConfirm();
     onClose();
   };
   return (
@@ -22,9 +18,9 @@ const NotificationDelete = ({isOpenWindow, onClose, id}) => {
           animate="visible"
           exit="exit"
         >
-          <p className="text-xl text-center mb-4">Do you want delete this contact?</p>
+          <p className="text-xl text-center mb-4">{text}</p>
           <div className="flex justify-center gap-4">
-            <button className="btn btn-outline btn-sm" onClick={handleDelete}>
+            <button className="btn btn-outline btn-sm" onClick={handleConfirm}>
               Yes
             </button>
             <button className="btn btn-outline btn-sm" onClick={onClose}>
@@ -36,4 +32,4 @@ const NotificationDelete = ({isOpenWindow, onClose, id}) => {
     </AnimatePresence>
   );
 };
-export default NotificationDelete;
+export default ConfirmationModal;

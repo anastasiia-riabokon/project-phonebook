@@ -1,11 +1,9 @@
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import CustomNavLink from "../../helpers/CustomNavLink";
 import {selectUser} from "../../redux/auth/selectors";
-import {logoutThunk} from "../../redux/auth/operations";
 
-const UserMenu = () => {
+const UserMenu = ({handleExit}) => {
   const user = useSelector(selectUser);
-  const dispatch = useDispatch();
 
   return (
     <>
@@ -15,7 +13,7 @@ const UserMenu = () => {
 
       <li className="navbar-end flex items-center gap-2 max-[767px]:hidden">
         <CustomNavLink to="/contacts">Contacts</CustomNavLink>
-        <button className="btn btn-outline" type="submit" onClick={() => dispatch(logoutThunk())}>
+        <button className="btn btn-outline" type="submit" onClick={handleExit}>
           Log Out
         </button>
       </li>
@@ -49,11 +47,7 @@ const UserMenu = () => {
               <CustomNavLink to="/contacts">Contacts</CustomNavLink>
             </li>
             <li>
-              <button
-                className="btn btn-outline btn-sm"
-                type="submit"
-                onClick={() => dispatch(logoutThunk())}
-              >
+              <button className="btn btn-outline btn-sm" type="submit" onClick={handleExit}>
                 Log Out
               </button>
             </li>
