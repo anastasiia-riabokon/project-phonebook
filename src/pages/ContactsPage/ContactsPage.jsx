@@ -3,7 +3,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {selectContacts, selectError, selectLoading} from "../../redux/contacts/selectors";
 import {selectFilteredContacts, selectNameFilter} from "../../redux/filters/selectors";
 import {deleteContact, fetchContacts} from "../../redux/contacts/operations";
-import {logoutThunk} from "../../redux/auth/operations";
 import {setCurrentContact} from "../../redux/contacts/slice";
 
 import Section from "../../components/Layout/Section";
@@ -26,7 +25,6 @@ const ContactsPage = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenWindow, setIsOpenWindow] = useState(false);
-
   const [deleteContactId, setDeleteContactId] = useState(null);
 
   useEffect(() => {

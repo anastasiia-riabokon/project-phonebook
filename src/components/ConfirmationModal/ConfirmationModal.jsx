@@ -1,6 +1,7 @@
 import Modal from "react-modal";
-import {customStyles} from "../../helpers/customStyleForModal";
 import {AnimatePresence, motion} from "framer-motion";
+
+import {customStyles} from "../../helpers/customStyleForModal";
 import {modalVariants} from "../../helpers/paramsAnimationModal";
 
 const ConfirmationModal = ({isOpenWindow, onClose, text, onConfirm}) => {

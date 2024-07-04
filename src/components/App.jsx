@@ -8,7 +8,6 @@ import {selectIsRefreshing} from "../redux/auth/selectors";
 import PrivateRoute from "../routes/PrivateRoute";
 import RestrictedRoute from "../routes/RestrictedRoute";
 import Loader from "./Loader/Loader";
-
 import Layout from "./Layout/Layout";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));

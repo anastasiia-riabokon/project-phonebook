@@ -1,16 +1,19 @@
 import Modal from "react-modal";
+import {motion, AnimatePresence} from "framer-motion";
 import {useDispatch, useSelector} from "react-redux";
 import {Form, Formik} from "formik";
+import {useId} from "react";
+
 import {selectCurrentContact} from "../../redux/contacts/selectors";
 import {editContact} from "../../redux/contacts/operations";
+
 import {FeedbackSchema} from "../../helpers/FeedbackSchema";
 import {GrClose} from "react-icons/gr";
 import {customStyles} from "../../helpers/customStyleForModal";
-import {motion, AnimatePresence} from "framer-motion";
 import {modalVariants} from "../../helpers/paramsAnimationModal";
+
 import NameField from "../Fields/NameField";
 import NumberField from "../Fields/NumberField";
-import {useId} from "react";
 
 Modal.setAppElement("#root");
 

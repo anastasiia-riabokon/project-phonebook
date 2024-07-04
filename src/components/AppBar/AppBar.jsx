@@ -1,11 +1,13 @@
+import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
+
+import {selectIsLoggedIn} from "../../redux/auth/selectors";
+import {logoutThunk} from "../../redux/auth/operations";
+
 import AuthNav from "../AuthNav/AuthNav";
 import Navigation from "../Navigation/Navigation";
 import UserMenu from "../UserMenu/UserMenu";
-import {selectIsLoggedIn, selectUser} from "../../redux/auth/selectors";
-import {useState} from "react";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
-import {logoutThunk} from "../../redux/auth/operations";
 
 const AppBar = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);

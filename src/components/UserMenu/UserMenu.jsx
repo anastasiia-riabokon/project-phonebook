@@ -1,6 +1,7 @@
 import {useSelector} from "react-redux";
-import CustomNavLink from "../../helpers/CustomNavLink";
+
 import {selectUser} from "../../redux/auth/selectors";
+import CustomNavLink from "../../helpers/CustomNavLink";
 
 const UserMenu = ({handleExit}) => {
   const user = useSelector(selectUser);
