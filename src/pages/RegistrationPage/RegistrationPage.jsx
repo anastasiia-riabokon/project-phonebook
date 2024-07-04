@@ -64,7 +64,7 @@ const RegistrationPage = () => {
                   required
                 />
                 <label className="flex justify-between items-center mt-1">
-                  <p className="label-text-alt">Don't you have account?</p>
+                  <p className="label-text-alt">Do you have an account?</p>
                   <Link to="/login" className="label-text-alt btn btn-outline btn-xs btn-accent">
                     Login
                   </Link>
